@@ -24,6 +24,23 @@ lived here. In August 2026 the marketing page was rebuilt as plain HTML/JS
 prototype was removed. Edit `index.html` and `site.js` directly — there is
 nothing to build.
 
+## Running locally
+
+No build step — plain static files. Serve the directory with anything:
+
+```bash
+python3 -m http.server 8000
+```
+
+Opening `index.html` via `file://` won't work — asset paths resolve against a
+server root.
+
+## Deploying
+
+Cloudflare Pages, ready to serve as-is: build command *(none)*, build output
+directory `/`. Note: Cloudflare's Email Address Obfuscation rewrites the
+`mailto:` footer link at serve time — that's a CDN feature, not source.
+
 ## Waitlist
 
 The signup forms POST to the Doulie Supabase project's `waitlist_signups`
