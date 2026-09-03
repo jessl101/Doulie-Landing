@@ -258,7 +258,9 @@
         <tr><td>Cursor pan</td><td class="num">± 90 × 60 units</td><td>Pointer position, smoothed. Enough to feel the volume, never enough to notice the mouse.</td></tr>
         <tr><td>Drift</td><td class="num">± 18 units, 57-second period</td><td>Always on. The room breathes even when nothing else moves.</td></tr>
         <tr><td>Prop tilt</td><td class="num">≤ 7° yaw, ≤ 6° pitch</td><td>Cursor over the prop, fine pointers only. Off on touch.</td></tr>
+        <tr><td>Shooting star</td><td class="num">1.2–1.6s crossing, every 9–16s</td><td>The one fast thing on the page. First crossing three seconds after load, through the hero; then at random during night beats only. Never at dawn, never under reduced motion.</td></tr>
       </table></div>
+      <p>The shooting star lives inside the 3D volume, not on top of it: it starts high and far, falls toward the camera, and its tail is drawn from lavender to cream with a faint gold head, the same three lights as the rest of the sky. It is the page's one wish.</p>
       <p>There are no zooms, no whip pans, no scroll-jacking. The user's scroll is always the user's scroll.</p>
     </div>
   </section>
@@ -270,6 +272,7 @@
         <li><strong>One easing.</strong> cubic-bezier(0.16, 1, 0.3, 1), the same curve the production stylesheet already uses, at durations between 0.9s and 1.4s. Nothing snaps.</li>
         <li><strong>Everything is visible at rest.</strong> Type rises 28px and fades in as a beat enters, from a resting state that is already legible. The prop's data draws itself once: timeline segments scale from the left, bars grow from the baseline, messages arrive half a second apart.</li>
         <li><strong>Ambient motion is slow and small.</strong> Star twinkle on a 4–6s sine. Spark rotation at 0.08 rad/s. The clock dot breathes on a 4.2s cycle. Grain steps at 6 fps.</li>
+        <li><strong>One fast thing.</strong> The shooting star is the only motion on the page quicker than a second. Because everything else is slow, it reads as an event, and because it is rare, it stays one.</li>
         <li><strong>The clock changes with the hour.</strong> A 180ms fade out and in when the beat changes. It is the only thing on the page that ever "cuts".</li>
         <li><strong>Reduced motion is a still.</strong> With prefers-reduced-motion, the star field renders one frame, every reveal is already complete, grain and breathing stop. The page is fully readable as a photograph.</li>
       </ul>

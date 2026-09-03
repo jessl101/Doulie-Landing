@@ -360,6 +360,7 @@
   /* ---------- 3D star field: perspective projection, depth of field, scroll dolly, mouse pan ---------- */
   var cv = document.getElementById('stars'), ctx = cv.getContext('2d');
   var W, H, DPR, stars = [], sparks = [];
+  var meteor = null, nextMeteor = 3.2; // first one crosses the hero a few seconds in, then every 9–16s
   var FOCAL = 720, NEAR = 120, FAR = 2600, FOCUS = 900;
   var camZ = -520, targetCamZ = 0, camX = 0, camY = 0, mx = 0, my = 0;
   var tints = [
@@ -422,6 +423,29 @@
       var a=Math.min(1,(1.15-dz/FAR))*tw*starA*.95;
       if(a<=0.01) continue;
       dot(sx,sy,Math.max(.6,rad),s.c,a,blur);
+    }
+    // shooting star: one fast thing on a slow page. Night scenes only.
+    if(!reduce && !meteor && t>nextMeteor && sceneMix<.5 && document.visibilityState==='visible'){
+      // enters top-right, falls left and toward the camera, ends in the open sky above the headline
+      meteor = { x:1300+Math.random()*600, y:-(900+Math.random()*400), z:1000+Math.random()*800,
+                 dx:-(1300+Math.random()*500), dy:560+Math.random()*220, dz:-260, dur:1.25+Math.random()*.4, born:t };
+    }
+    if(meteor){
+      var m=meteor, u=(t-m.born)/m.dur; if(u>=1){ meteor=null; nextMeteor=t+9+Math.random()*7; }
+      else {
+        var e=1-Math.pow(1-u,2.2), hx=m.x+m.dx*e, hy=m.y+m.dy*e, hz=m.z+m.dz*e-camZ;
+        var tl=Math.max(0,e-.2), tx=m.x+m.dx*tl, ty=m.y+m.dy*tl, tz=m.z+m.dz*tl-camZ;
+        var kh=f/hz, kt=f/tz;
+        var hX=cx+(hx+camX+drift)*kh, hY=cy+(hy+camY)*kh, tX=cx+(tx+camX+drift)*kt, tY=cy+(ty+camY)*kt;
+        var ma=(u<.15?u/.15:(u>.7?(1-u)/.3:1))*starA;
+        var lg=ctx.createLinearGradient(tX,tY,hX,hY);
+        lg.addColorStop(0,'rgba(160,154,202,0)'); lg.addColorStop(.55,'rgba(160,154,202,'+(ma*.55)+')'); lg.addColorStop(1,'rgba(242,239,232,'+ma+')');
+        ctx.strokeStyle=lg; ctx.lineCap='round'; ctx.lineWidth=Math.max(1.2,3.2*kh*DPR);
+        ctx.beginPath(); ctx.moveTo(tX,tY); ctx.lineTo(hX,hY); ctx.stroke();
+        var hg=ctx.createRadialGradient(hX,hY,0,hX,hY,16*DPR*kh+4);
+        hg.addColorStop(0,'rgba(242,239,232,'+ma+')'); hg.addColorStop(.3,'rgba(245,162,93,'+(ma*.5)+')'); hg.addColorStop(1,'rgba(160,154,202,0)');
+        ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(hX,hY,16*DPR*kh+4,0,6.283); ctx.fill();
+      }
     }
     for(var j=0;j<sparks.length;j++){
       var q=sparks[j], qz=q.z-camZ; if(qz<NEAR){ q.z+=(FAR-NEAR); qz=q.z-camZ; }
