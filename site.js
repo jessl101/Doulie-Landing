@@ -113,7 +113,7 @@
     var W, H, DPR, stars = [], sparks = [];
     var FOCAL = 720, NEAR = 120, FAR = 2600, FOCUS = 900;
     var camZ = -520, camX = 0, camY = 0, mx = 0, my = 0;
-    var meteor = null, nextMeteor = 3.2;
+    var meteor = null, nextMeteor = 2.6;
     var tints = [[242, 239, 232, 0.58], [160, 154, 202, 0.27], [170, 191, 170, 0.15]];
 
     var pick = function () {
@@ -188,15 +188,20 @@
         if (a <= 0.01) continue;
         dot(sx, sy, Math.max(0.6, rad), s.c, a, blur);
       }
-      // shooting star: enters top-right, falls left and toward the camera
+      // shooting star: the path is chosen in screen space so it crosses the open
+      // sky at any viewport size, then lifted into the volume at a real depth so
+      // it parallaxes like everything else. Night scenes only.
       if (!reduce && !meteor && t > nextMeteor && sceneMix < 0.5 && running) {
-        meteor = { x: 1300 + Math.random() * 600, y: -(900 + Math.random() * 400), z: 1000 + Math.random() * 800,
-                   dx: -(1300 + Math.random() * 500), dy: 560 + Math.random() * 220, dz: -260,
-                   dur: 1.25 + Math.random() * 0.4, born: t };
+        var zc = 900 + Math.random() * 600, kz = f / zc;
+        var x0 = W * (0.62 + Math.random() * 0.33), y0 = -H * 0.06;
+        var x1 = W * (0.28 + Math.random() * 0.27), y1 = H * (0.26 + Math.random() * 0.22);
+        meteor = { x: (x0 - cx) / kz - camX - drift, y: (y0 - cy) / kz - camY, z: zc + camZ,
+                   dx: (x1 - x0) / kz, dy: (y1 - y0) / kz, dz: -180,
+                   dur: 1.3 + Math.random() * 0.4, born: t };
       }
       if (meteor) {
         var m = meteor, u = (t - m.born) / m.dur;
-        if (u >= 1) { meteor = null; nextMeteor = t + 9 + Math.random() * 7; }
+        if (u >= 1) { meteor = null; nextMeteor = t + 7 + Math.random() * 6; }
         else {
           var e = 1 - Math.pow(1 - u, 2.2);
           var hx = m.x + m.dx * e, hy = m.y + m.dy * e, hz = m.z + m.dz * e - camZ;
@@ -209,7 +214,7 @@
           lg.addColorStop(0, "rgba(160,154,202,0)");
           lg.addColorStop(0.55, "rgba(160,154,202," + (ma * 0.55) + ")");
           lg.addColorStop(1, "rgba(242,239,232," + ma + ")");
-          ctx.strokeStyle = lg; ctx.lineCap = "round"; ctx.lineWidth = Math.max(1.2, 3.2 * kh * DPR);
+          ctx.strokeStyle = lg; ctx.lineCap = "round"; ctx.lineWidth = Math.max(1.6, 3.4 * kh * DPR);
           ctx.beginPath(); ctx.moveTo(tX, tY); ctx.lineTo(hX, hY); ctx.stroke();
           var hr = 16 * DPR * kh + 4, hg = ctx.createRadialGradient(hX, hY, 0, hX, hY, hr);
           hg.addColorStop(0, "rgba(242,239,232," + ma + ")");
