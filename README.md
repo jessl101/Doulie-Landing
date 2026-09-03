@@ -7,11 +7,14 @@ static HTML, no framework, no build step.
 
 ```
 index.html          The landing page (semantic HTML, edit directly)
-site.js             All behavior: waitlist form → Supabase, stages carousel
+landing.css         The landing stylesheet (hand-written; fonts load from
+                    Google Fonts and Fontshare)
+site.js             All behavior: waitlist form → Supabase, the night sky
+                    (Canvas star field, scroll-driven sky and clock), prop tilt
+concept/            The creative direction ("The Long Night") and the
+                    prototype the landing page was built from
 privacy/index.html  Privacy Policy  — keep in sync with the iOS app's PrivacyView
 terms/index.html    Terms of Use    — keep in sync with the iOS app's TermsView
-_next/static/css/   The site stylesheet (inherited from the original Next.js
-                    build; fonts load from Google Fonts / Fontshare)
 *.png, *.svg, *.ico Brand assets — wordmark, social card, favicons, touch icon
                     (generated from the iOS app's assets; keep them matching)
 ```
@@ -19,10 +22,12 @@ _next/static/css/   The site stylesheet (inherited from the original Next.js
 ## History
 
 The site began as a Next.js app; its source was lost and the compiled export
-lived here. In August 2026 the marketing page was rebuilt as plain HTML/JS
-(same markup and stylesheet, so it is pixel-identical) and the in-browser app
-prototype was removed. Edit `index.html` and `site.js` directly — there is
-nothing to build.
+lived here. In August 2026 the marketing page was rebuilt as plain HTML/JS and
+the in-browser app prototype was removed. In September 2026 the page was
+redesigned as "The Long Night" (one night told in hours, a 3D star field, the
+same palette and typefaces) and the last of the Next.js stylesheet went with
+it. Edit `index.html`, `landing.css` and `site.js` directly — there is nothing
+to build. The design rationale lives in `concept/direction.html`.
 
 ## Running locally
 
