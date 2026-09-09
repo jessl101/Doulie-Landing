@@ -1,0 +1,14 @@
+# Cloudflare Pages custom headers. Pages' default is a 4-hour cache on
+# everything; the CSS/JS are cache-busted with ?v= and the images are
+# renamed when they change, so a week is safe. HTML is left at the default
+# so a deploy shows up immediately.
+/*.css
+  Cache-Control: public, max-age=604800
+/*.js
+  Cache-Control: public, max-age=604800
+/*.png
+  Cache-Control: public, max-age=604800
+/*.svg
+  Cache-Control: public, max-age=604800
+/*.ico
+  Cache-Control: public, max-age=604800

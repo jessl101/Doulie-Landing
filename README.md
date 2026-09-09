@@ -50,3 +50,13 @@ directory `/`. Note: Cloudflare's Email Address Obfuscation rewrites the
 
 The signup forms POST to the Doulie Supabase project's `waitlist_signups`
 table using the publishable key. Duplicate emails are treated as success.
+
+## SEO and hosting files
+
+- `sitemap.xml` — only `/` is listed; `/privacy/` and `/terms/` are deliberately `noindex`. Add guide pages here as they ship.
+- `robots.txt` — Cloudflare's content-signal block plus `User-agent: * / Allow: /` and the sitemap reference.
+- `404.html` — a top-level 404 page is what stops Cloudflare Pages from falling back to SPA mode, where every unknown URL returned the homepage with a 200 (soft 404s). Keep it.
+- `_headers` — one-week cache on CSS/JS/images. CSS and JS are cache-busted with `?v=`; bump it when you change them. Images are renamed instead.
+- `_redirects` — `www.` → apex 301.
+- Fonts load from `<link>` tags in each page's `<head>`, not `@import` in `landing.css` (an `@import` can't start until the CSS has fully downloaded). Satoshi has no 600 weight, so the request is `400,500,700` and `font-weight:600` in the CSS resolves to 700.
+- `doulie-wordmark-2x.png` (361×128, ~27 KB) is what the pages use; `doulie-wordmark.png` (929×329, ~130 KB) stays as the schema.org logo.

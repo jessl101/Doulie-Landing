@@ -1,7 +1,9 @@
 /* Doulie landing — "The Long Night".
-   One night told in hours. Hand-written; no build step. See concept/direction.html. */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
-@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap");
+   One night told in hours. Hand-written; no build step. See concept/direction.html.
+   Fonts are loaded from <link> tags in each page's <head>, not @import here:
+   an @import can't start until this file has fully downloaded, which put two
+   render-blocking requests in series behind it. Satoshi has no 600 cut
+   (300/400/500/700/900), so font-weight:600 below resolves to 700. */
 
 :root{
   --deep:#070B14; --bg:#0F1520; --bg2:#121826;

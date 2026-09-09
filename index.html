@@ -3,15 +3,18 @@
 <head><meta charSet="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preconnect" href="https://api.fontshare.com"/>
-<link rel="stylesheet" href="/landing.css?v=20260903b"/>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"/>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"/>
+<link rel="stylesheet" href="/landing.css?v=20260909"/>
 <meta name="theme-color" content="#0F1520"/>
 <meta name="color-scheme" content="dark"/>
 <title>Doulie — Baby Sleep App &amp; Newborn Sleep Tracker (Coming Soon)</title>
-<meta name="description" content="Doulie is a calm, AI-powered baby sleep app for exhausted parents. Log the day in one tap, see nights and naps on one timeline, share the log with your partner, and know what to try tonight — from newborn to two years. Coming soon to the App Store."/>
+<meta name="description" content="A calm, AI-powered baby sleep app: one-tap logging, nights and naps on one timeline, and one gentle thing to try tonight. Newborn to two years."/>
 <meta name="application-name" content="Doulie Sleep"/>
 <meta name="author" content="Doulie Sleep"/>
-<meta name="keywords" content="baby sleep app,newborn sleep,baby sleep tracker,AI sleep support,baby sleep help,infant sleep app,baby nap tracker,newborn sleep tracker,toddler sleep"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://douliesleep.com"/>
 <meta property="og:title" content="Doulie — Baby Sleep App &amp; Newborn Sleep Tracker (Coming Soon)"/>
@@ -34,6 +37,77 @@
 <link rel="icon" href="/favicon-stars-only-16x16-20260724.png" sizes="16x16" type="image/png"/>
 <link rel="icon" href="/doulie-stars-only.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://douliesleep.com/#organization",
+      "name": "Doulie Sleep",
+      "url": "https://douliesleep.com",
+      "logo": "https://douliesleep.com/doulie-wordmark.png",
+      "email": "hello@douliesleep.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://douliesleep.com/#website",
+      "url": "https://douliesleep.com",
+      "name": "Doulie",
+      "publisher": { "@id": "https://douliesleep.com/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://douliesleep.com/#app",
+      "name": "Doulie",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS",
+      "description": "A calm, AI-powered baby sleep app for exhausted parents: one-tap logging of feeds, naps and wake-ups, the whole day on one timeline, partner sharing, and one gentle thing to try tonight. Educational sleep support for caregivers, not medical advice.",
+      "url": "https://douliesleep.com",
+      "image": "https://douliesleep.com/doulie-social-preview.png",
+      "publisher": { "@id": "https://douliesleep.com/#organization" },
+      "audience": { "@type": "PeopleAudience", "audienceType": "Parents and caregivers of babies from newborn to two years" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://douliesleep.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When can I download Doulie?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Doulie is coming soon to the Apple App Store. Save your spot on douliesleep.com and we'll email you the moment it's available. No spam, just the one note." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my baby sleep through the night?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every baby is different, and we won't promise a specific outcome. Doulie is built to help you work toward calmer, more consistent nights with practical, gentle guidance. Progress, not guarantees." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Doulie medical advice?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Doulie offers educational sleep support for caregivers. For medical questions about your baby's health, feeding or sleep safety, please speak with your pediatrician." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my partner use it too?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Doulie is built for households. Invite your partner or a grandparent with a short code from Settings, and you both log to the same record from your own phones. Either of you can stop sharing at any time." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Doulie actually do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You log feeds, naps and wake-ups in seconds. Doulie reads those patterns, suggests the next likely window and a calm thing to try tonight, and answers questions in plain language. It keeps your baby's context so guidance stays consistent, and you can share the log with a partner so you're both working from the same night." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much will it cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Doulie starts with a 7-day free trial of personalized AI guidance, then you choose a monthly or annual plan. Exact pricing lands with the App Store release, and the launch email will have it." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="sky" aria-hidden="true">
@@ -49,7 +123,7 @@
 <div class="grain" aria-hidden="true"></div>
 
 <header class="top">
-  <a href="/" aria-label="Doulie home"><img class="wordmark" src="/doulie-wordmark.png" alt="Doulie" width="929" height="329"/></a>
+  <a href="/" aria-label="Doulie home"><img class="wordmark" src="/doulie-wordmark-2x.png" alt="Doulie" width="361" height="128" fetchpriority="high"/></a>
   <div class="clock" aria-live="polite"><span>Tonight</span><i class="dot" aria-hidden="true"></i><b id="clock">2:47</b></div>
 </header>
 
@@ -197,7 +271,7 @@
     <div class="beat-inner">
       <div class="copy">
         <p class="eyebrow rise"><time>Newborn to two</time> · every stage</p>
-        <h2 id="stages-title" class="rise">Support that grows<br/>with your baby.</h2>
+        <h2 id="stages-title" class="rise">Newborn to toddler:<br/>support that grows with your baby.</h2>
         <p class="lede rise">From the newborn fog to big-kid nights, Doulie knows what's normal for right now, and what's worth trying next.</p>
       </div>
       <ul class="stages rise" data-testid="stages-list">
@@ -262,7 +336,7 @@
 
 <footer class="landing-footer">
   <div class="landing-footer-inner">
-    <a href="/" aria-label="Doulie home"><img src="/doulie-wordmark.png" alt="Doulie" width="929" height="329"/></a>
+    <a href="/" aria-label="Doulie home"><img src="/doulie-wordmark-2x.png" alt="Doulie" width="361" height="128" loading="lazy"/></a>
     <p class="landing-footer-fineprint">© 2026 Doulie Sleep. Educational sleep support for caregivers only, not medical advice, diagnosis or treatment, and no guaranteed sleep outcomes. Always consult your pediatrician for health and safety concerns. Questions? <a class="landing-link" href="mailto:hello@douliesleep.com">hello@douliesleep.com</a>.</p>
     <p class="landing-footer-fineprint"><a class="landing-link" href="/privacy/">Privacy Policy</a> &nbsp;·&nbsp; <a class="landing-link" href="/terms/">Terms of Use</a></p>
   </div>
