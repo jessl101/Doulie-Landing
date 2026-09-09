@@ -1,0 +1,5 @@
+# www serves the site with a 200 today, which is a duplicate host. Canonical
+# tags mitigate it; a 301 fixes it. Domain-level rules only apply when the
+# www hostname is attached to this Pages project (it is — that's why it
+# currently returns 200 rather than failing to resolve).
+https://www.douliesleep.com/* https://douliesleep.com/:splat 301
